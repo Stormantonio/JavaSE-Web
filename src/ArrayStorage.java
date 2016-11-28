@@ -16,7 +16,7 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        if (isFull()){
+        if (isFull()) {
             System.out.println("Хранилище резюме переполнено!!!");
             return;
         }
@@ -42,7 +42,7 @@ public class ArrayStorage {
         if (isNull())
             return;
         int findUuid = find(uuid);
-        if (findUuid != -1){
+        if (findUuid != -1) {
             storage[findUuid] = storage[size - 1];
             size--;
             return;
@@ -65,7 +65,7 @@ public class ArrayStorage {
         return size;
     }
 
-    private boolean isFull(){
+    private boolean isFull() {
         if (size == storageMaxLength)
             return true;
         else
@@ -73,7 +73,7 @@ public class ArrayStorage {
     }
 
     private boolean isNull() {
-        if (size == 0){
+        if (size == 0) {
             System.out.println("Хранилище резюме пустое!!!");
             return true;
         }
