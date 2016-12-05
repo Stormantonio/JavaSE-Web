@@ -28,7 +28,7 @@ public class ArrayStorage {
             return;
         }
         if (find(r.getUuid()) != -1) {
-            System.out.println("Извините, такое " + r + " резюме уже есть!!!");
+            System.out.println("Извините, резюме " + r + " уже есть!!!");
             return;
         }
         storage[size] = r;
@@ -47,10 +47,10 @@ public class ArrayStorage {
                 storage[findIndex].setUuid(newResume);
                 System.out.println("Резюме " + newResume + " успешно изменено!");
             } else {
-                System.out.println("Извините, такое " + newResume + " резюме уже есть!!!");
+                System.out.println("Извините, резюме " + newResume + " уже есть!!!");
             }
         } else
-            System.out.println("Такого " + r + " резюме нет!!!");
+            System.out.println("Резюме " + r + " нет!!!");
     }
 
     public Resume get(String uuid) {
@@ -59,7 +59,7 @@ public class ArrayStorage {
         int findUuid = find(uuid);
         if (findUuid != -1)
             return storage[findUuid];
-        System.out.println("Такого " + uuid + " резюме нет!!!");
+        System.out.println("Резюме " + uuid + " нет!!!");
         return null;
     }
 
@@ -69,11 +69,11 @@ public class ArrayStorage {
         int findUuid = find(uuid);
         if (findUuid != -1) {
             storage[findUuid] = storage[size - 1];
-            storage[size] = null;
+            storage[size -1] = null;
             size--;
             return;
         }
-        System.out.println("Такого " + uuid + " резюме нет!!!");
+        System.out.println("Резюме " + uuid + " нет!!!");
     }
 
     /**
