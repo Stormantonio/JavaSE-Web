@@ -7,27 +7,27 @@ import com.work.webapp.storage.ArrayStorage;
  * Test for com.urise.webapp.storage.com.work.webapp.storage.ArrayStorage
  */
 public class MainTestArrayStorage {
-    static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+    private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
 
     public static void main(String[] args) {
-        Resume r1 = new Resume();
-        r1.setUuid("uuid1");
-        Resume r2 = new Resume();
-        r2.setUuid("uuid2");
-        Resume r3 = new Resume();
-        r3.setUuid("uuid3");
+        final Resume R1 = new Resume();
+        R1.setUuid("uuid1");
+        final Resume R2 = new Resume();
+        R2.setUuid("uuid2");
+        final Resume R3 = new Resume();
+        R3.setUuid("uuid3");
 
-        ARRAY_STORAGE.save(r1);
-        ARRAY_STORAGE.save(r2);
-        ARRAY_STORAGE.save(r3);
+        ARRAY_STORAGE.save(R1);
+        ARRAY_STORAGE.save(R2);
+        ARRAY_STORAGE.save(R3);
 
-        System.out.println("Get r1: " + ARRAY_STORAGE.get(r1.getUuid()));
+        System.out.println("Get r1: " + ARRAY_STORAGE.get(R1.getUuid()));
         System.out.println("Size: " + ARRAY_STORAGE.size());
 
         System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
 
         printAll();
-        ARRAY_STORAGE.delete(r1.getUuid());
+        ARRAY_STORAGE.delete(R1.getUuid());
         printAll();
         ARRAY_STORAGE.clear();
         printAll();

@@ -11,8 +11,8 @@ import java.util.Arrays;
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    private final Integer storageMaxLength = 10000;
-    private Resume[] storage = new Resume[storageMaxLength];
+    private static final Integer STORAGE_MAX_LENGTH = 10000;
+    private Resume[] storage = new Resume[STORAGE_MAX_LENGTH];
     private int size = 0;
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -87,7 +87,7 @@ public class ArrayStorage {
     }
 
     private boolean isFull() {
-        return size == storageMaxLength;
+        return size == STORAGE_MAX_LENGTH;
     }
 
     private boolean isNull() {
