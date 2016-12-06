@@ -2,12 +2,15 @@ package com.work.webapp;
 
 import com.work.webapp.model.Resume;
 import com.work.webapp.storage.ArrayStorage;
+import com.work.webapp.storage.Storage;
+
+import java.util.Arrays;
 
 /**
  * Test for com.urise.webapp.storage.com.work.webapp.storage.ArrayStorage
  */
 public class MainTestArrayStorage {
-    private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+    private final static Storage ARRAY_STORAGE = new ArrayStorage();
 
     public static void main(String[] args) {
         final Resume R1 = new Resume();
@@ -26,6 +29,8 @@ public class MainTestArrayStorage {
 
         System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
 
+//        System.out.println("Index of r2 " + Arrays.binarySearch(ARRAY_STORAGE.storage, 0,  ARRAY_STORAGE.size(), R2));
+
         printAll();
         ARRAY_STORAGE.delete(R1.getUuid());
         printAll();
@@ -33,6 +38,7 @@ public class MainTestArrayStorage {
         printAll();
 
         System.out.println("Size: " + ARRAY_STORAGE.size());
+
     }
 
     static void printAll() {

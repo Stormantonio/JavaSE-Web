@@ -2,19 +2,13 @@ package com.work.webapp.storage;
 
 import com.work.webapp.model.Resume;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 /**
  * Array based storage for Resumes
  */
-public class ArrayStorage implements Storage{
-    private static final Integer STORAGE_MAX_LENGTH = 10000;
-    private Resume[] storage = new Resume[STORAGE_MAX_LENGTH];
-    private int size = 0;
-    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+public class ArrayStorage extends AbstractArrayStorage {
 
     public void clear() {
         Arrays.fill(storage, 0, size, null);
@@ -35,7 +29,7 @@ public class ArrayStorage implements Storage{
     }
 
     public void update(Resume r) throws IOException {
-        if (isNull())
+        if (isNullStorage())
             return;
         int findIndex = find(r.getUuid());
         if (find(r.getUuid()) != -1) {
@@ -52,23 +46,14 @@ public class ArrayStorage implements Storage{
             System.out.println("Резюме " + r + " нет!!!");
     }
 
-    public Resume get(String uuid) {
-        if (isNull())
-            return null;
-        int findUuid = find(uuid);
-        if (findUuid != -1)
-            return storage[findUuid];
-        System.out.println("Резюме " + uuid + " нет!!!");
-        return null;
-    }
 
     public void delete(String uuid) {
-        if (isNull())
+        if (isNullStorage())
             return;
         int findUuid = find(uuid);
         if (findUuid != -1) {
             storage[findUuid] = storage[size - 1];
-            storage[size -1] = null;
+            storage[size - 1] = null;
             size--;
             return;
         }
@@ -82,15 +67,11 @@ public class ArrayStorage implements Storage{
         return Arrays.copyOfRange(storage, 0, size);
     }
 
-    public int size() {
-        return size;
-    }
-
     private boolean isFull() {
         return size == STORAGE_MAX_LENGTH;
     }
 
-    private boolean isNull() {
+    protected boolean isNullStorage() {
         if (size == 0) {
             System.out.println("Хранилище резюме пустое!!!");
             return true;
@@ -98,7 +79,7 @@ public class ArrayStorage implements Storage{
         return false;
     }
 
-    private int find(String currentUuid) {
+    protected int find(String currentUuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].getUuid().equals(currentUuid)) {
                 return i;

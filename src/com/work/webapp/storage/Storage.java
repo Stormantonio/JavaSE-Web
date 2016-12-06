@@ -11,6 +11,8 @@ public interface Storage {
 
     void clear();
 
+    void save(Resume r);
+
     void update(Resume r) throws IOException;
 
     Resume get(String uuid);
