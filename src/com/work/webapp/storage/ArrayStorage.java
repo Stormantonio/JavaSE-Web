@@ -79,9 +79,9 @@ public class ArrayStorage extends AbstractArrayStorage {
         return false;
     }
 
-    protected int find(String currentUuid) {
+    protected int find(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(currentUuid)) {
+            if (uuid.equals(storage[i].getUuid())) {
                 return i;
             }
         }
