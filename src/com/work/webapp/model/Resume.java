@@ -5,7 +5,7 @@ import com.sun.org.apache.regexp.internal.RE;
 /**
  * com.urise.webapp.model.com.work.webapp.model.Resume class
  */
-public class Resume implements Comparable<Resume>{
+public class Resume implements Comparable<Resume> {
 
     // Unique identifier
     private String uuid;

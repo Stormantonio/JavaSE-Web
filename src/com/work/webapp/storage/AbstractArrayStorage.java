@@ -49,8 +49,8 @@ public abstract class AbstractArrayStorage implements Storage {
         return false;
     }
 
-     protected boolean resumeIsExist(String index){
-        if (find(index) >= 0){
+    protected boolean resumeIsExist(String index) {
+        if (find(index) >= 0) {
             System.out.println("Извините, резюме " + index + " уже есть!!!");
             return true;
         }
@@ -58,7 +58,7 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     protected boolean resumeIsNotExist(String index) {
-        if (find(index) < 0){
+        if (find(index) < 0) {
             System.out.println("Резюме " + index + " нет!!!");
             return true;
         }
