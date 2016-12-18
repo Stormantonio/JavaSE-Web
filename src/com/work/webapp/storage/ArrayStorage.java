@@ -9,16 +9,9 @@ import java.io.IOException;
  */
 public class ArrayStorage extends AbstractArrayStorage {
 
-    public void save(Resume r) {
-        if (size == STORAGE_MAX_LENGTH) {
-            System.out.println("Хранилище резюме переполнено!!!");
-        } else if (!resumeIsExist(r.getUuid())) {
-            storage[size] = r;
-            size++;
-        }
-    }
 
-    public void update(Resume r) throws IOException {
+
+    /*public void update(Resume r) throws IOException {
         if (!isNullStorage()) {
             Integer findIndex = find(r.getUuid());
             if (!resumeIsNotExist(r.getUuid())) {
@@ -33,17 +26,16 @@ public class ArrayStorage extends AbstractArrayStorage {
                     System.out.println("Неверная комманда!!!");
             }
         }
+    }*/
+
+    @Override
+    protected void insertElement(Resume r, int index) {
+        storage[size] = r;
     }
 
-    public void delete(String uuid) {
-        if (!isNullStorage()) {
-            Integer findUuid = find(uuid);
-            if (!resumeIsNotExist(uuid)) {
-                storage[findUuid] = storage[size - 1];
-                storage[size - 1] = null;
-                size--;
-            }
-        }
+    @Override
+    protected void fillDeletedElement(int index) {
+        storage[index] = storage[size - 1];
     }
 
     protected int find(String uuid) {

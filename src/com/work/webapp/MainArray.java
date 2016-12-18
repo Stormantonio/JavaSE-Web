@@ -1,7 +1,6 @@
 package com.work.webapp;
 
 import com.work.webapp.model.Resume;
-import com.work.webapp.storage.ArrayStorage;
 import com.work.webapp.storage.SortedArrayStorage;
 import com.work.webapp.storage.Storage;
 
@@ -17,11 +16,11 @@ public class MainArray {
     private final static Storage ARRAY_STORAGE = new SortedArrayStorage();
 
     public static void main(String[] args) throws IOException {
-        final Resume R1 = new Resume();
+        /*final Resume R1 = new Resume(uuid);
         R1.setUuid("uuid1");
-        final Resume R2 = new Resume();
+        final Resume R2 = new Resume(uuid);
         R2.setUuid("uuid2");
-        final Resume R3 = new Resume();
+        final Resume R3 = new Resume(uuid);
         R3.setUuid("uuid3");
 
         System.out.println(R1 == R2);
@@ -33,17 +32,17 @@ public class MainArray {
         System.out.println("Get r1: " + ARRAY_STORAGE.get(R1.getUuid()));
         System.out.println("Size: " + ARRAY_STORAGE.size());
 
-        System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
+        System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));*/
 
 //      System.out.println("Index of r3: "+ Arrays.binarySearch(ARRAY_STORAGE.storage, 0, ARRAY_STORAGE.size(), r3));
 
-        printAll();
+        /*printAll();
         ARRAY_STORAGE.delete(R1.getUuid());
         printAll();
         ARRAY_STORAGE.update(R3);
         printAll();
         ARRAY_STORAGE.clear();
-        printAll();
+        printAll();*/
 
         System.out.println("Size: " + ARRAY_STORAGE.size());
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -67,8 +66,7 @@ public class MainArray {
                     System.out.println(ARRAY_STORAGE.size());
                     break;
                 case "save":
-                    r = new Resume();
-                    r.setUuid(uuid);
+                    r = new Resume(uuid);
                     ARRAY_STORAGE.save(r);
                     printAll();
                     break;

@@ -2,7 +2,6 @@ package com.work.webapp.storage;
 
 import com.work.webapp.model.Resume;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -10,7 +9,7 @@ import java.util.Arrays;
  */
 public class SortedArrayStorage extends AbstractArrayStorage {
 
-    @Override
+   /* @Override
     public void save(Resume r) {
         if (size == STORAGE_MAX_LENGTH) {
             System.out.println("Хранилище резюме переполнено!!!");
@@ -47,16 +46,31 @@ public class SortedArrayStorage extends AbstractArrayStorage {
                 remove(index);
             }
         }
+    }*/
+
+    @Override
+    protected void insertElement(Resume r, int index) {
+//        http://codereview.stackexchange.com/questions/36221/binary-search-for-inserting-in-array#answer-36239
+        int insertIdx = -index - 1;
+        System.arraycopy(storage, insertIdx, storage, insertIdx + 1, size - insertIdx);
+        storage[insertIdx] = r;
+    }
+
+    @Override
+    protected void fillDeletedElement(int index) {
+        int numMoved = size - index - 1;
+        if (numMoved > 0) {
+            System.arraycopy(storage, index + 1, storage, index, numMoved);
+        }
     }
 
     @Override
     protected int find(String uuid) {
-        Resume searchKey = new Resume();
-        searchKey.setUuid(uuid);
+        Resume searchKey = new Resume(uuid);
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
 
-    private void paste(Resume r) {
+    /*private void paste(Resume r) {
         Integer index = Arrays.binarySearch(storage, 0, size, r);
         index = -index - 1;
         System.arraycopy(storage, index, storage, index + 1, storage.length - index - 1);
@@ -67,5 +81,5 @@ public class SortedArrayStorage extends AbstractArrayStorage {
     private void remove(Integer index) {
         System.arraycopy(storage, index + 1, storage, index, storage.length - index - 1);
         size--;
-    }
+    }*/
 }

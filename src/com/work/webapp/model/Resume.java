@@ -1,6 +1,6 @@
 package com.work.webapp.model;
 
-import com.sun.org.apache.regexp.internal.RE;
+import java.util.UUID;
 
 /**
  * com.urise.webapp.model.com.work.webapp.model.Resume class
@@ -8,9 +8,10 @@ import com.sun.org.apache.regexp.internal.RE;
 public class Resume implements Comparable<Resume> {
 
     // Unique identifier
-    private String uuid;
+    private final String uuid;
 
     public Resume() {
+        this(UUID.randomUUID().toString());
     }
 
     public Resume(String uuid) {
@@ -34,10 +35,6 @@ public class Resume implements Comparable<Resume> {
     @Override
     public int hashCode() {
         return uuid.hashCode();
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     @Override
