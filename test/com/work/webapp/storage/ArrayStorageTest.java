@@ -15,8 +15,16 @@ import java.io.InputStreamReader;
 public class ArrayStorageTest extends AbstractArrayStorageTest {
 
     @Test
-    public void arrayStorageTest() {
+    public void arrayStorageTest() throws Exception {
         Storage storage = new ArrayStorage();
-
+        setStorage(storage);
+        super.clear();
+        super.save();
+        //super.update();
+        //super.get();
+        //super.delete();
+        //super.getAll();
+        //super.size();
+        //super.getNotExist();
     }
 }
