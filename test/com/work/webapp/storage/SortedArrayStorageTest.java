@@ -1,5 +1,6 @@
 package com.work.webapp.storage;
 
+import com.work.webapp.exception.StorageException;
 import org.junit.Test;
 
 /**
@@ -7,17 +8,17 @@ import org.junit.Test;
  */
 public class SortedArrayStorageTest extends AbstractArrayStorageTest {
 
-    @Test
+    @Test (expected = StorageException.class)
     public void sortedArrayStorageTest() throws Exception {
         Storage storage = new SortedArrayStorage();
         setStorage(storage);
         super.clear();
         super.save();
-        //super.update();
-        //super.get();
-        //super.delete();
-        //super.getAll();
-        //super.size();
-        //super.getNotExist();
+        super.update();
+        super.get();
+        super.delete();
+        super.getAll();
+        super.size();
+        super.getNotExist();
     }
 }

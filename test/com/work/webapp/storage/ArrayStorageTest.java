@@ -1,5 +1,7 @@
 package com.work.webapp.storage;
 
+import com.work.webapp.exception.ExistStorageException;
+import com.work.webapp.exception.StorageException;
 import com.work.webapp.model.Resume;
 import org.junit.After;
 import org.junit.Before;
@@ -14,17 +16,17 @@ import java.io.InputStreamReader;
  */
 public class ArrayStorageTest extends AbstractArrayStorageTest {
 
-    @Test
+    @Test (expected = StorageException.class)
     public void arrayStorageTest() throws Exception {
         Storage storage = new ArrayStorage();
         setStorage(storage);
         super.clear();
         super.save();
-        //super.update();
-        //super.get();
-        //super.delete();
-        //super.getAll();
-        //super.size();
-        //super.getNotExist();
+        super.update();
+        super.get();
+        super.delete();
+        super.getAll();
+        super.size();
+        super.getNotExist();
     }
 }
