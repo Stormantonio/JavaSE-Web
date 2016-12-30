@@ -15,18 +15,7 @@ import java.io.InputStreamReader;
  * Created by Anton on 20.12.2016.
  */
 public class ArrayStorageTest extends AbstractArrayStorageTest {
-
-    @Test (expected = StorageException.class)
-    public void arrayStorageTest() throws Exception {
-        Storage storage = new ArrayStorage();
-        setStorage(storage);
-        super.clear();
-        super.save();
-        super.update();
-        super.get();
-        super.delete();
-        super.getAll();
-        super.size();
-        super.getNotExist();
+    public ArrayStorageTest() {
+        super(new ArrayStorage());
     }
 }
