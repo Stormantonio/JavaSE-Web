@@ -1,6 +1,8 @@
 package com.work.webapp;
 
 import com.work.webapp.model.Resume;
+import com.work.webapp.storage.ListStorage;
+import com.work.webapp.storage.MapStorage;
 import com.work.webapp.storage.SortedArrayStorage;
 import com.work.webapp.storage.Storage;
 
@@ -12,8 +14,10 @@ import java.io.InputStreamReader;
  * Test for com.urise.webapp.storage.com.work.webapp.storage.ArrayStorage
  */
 public class MainArray {
-    //    private final static Storage ARRAY_STORAGE = new ArrayStorage();
-    private final static Storage ARRAY_STORAGE = new SortedArrayStorage();
+//    private final static Storage ARRAY_STORAGE = new ArrayStorage();
+//    private final static Storage ARRAY_STORAGE = new SortedArrayStorage();
+//    private final static Storage ARRAY_STORAGE = new ListStorage();
+    private final static Storage ARRAY_STORAGE = new MapStorage();
 
     public static void main(String[] args) throws IOException {
         /*final Resume R1 = new Resume(uuid);
