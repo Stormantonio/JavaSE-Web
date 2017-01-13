@@ -14,8 +14,7 @@ import java.util.List;
  * Created by Anton on 05.01.2017.
  */
 public class ListStorage extends AbstractStorage {
-    protected List<Resume> resumes = new ArrayList<>();
-    protected BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private List<Resume> resumes = new ArrayList<>();
 
     @Override
     public void clear() {
@@ -29,28 +28,19 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    public void update(Resume r) throws IOException {
-        if (!isNullStorage()) {
+    public void update(Resume r) {
+        if (!isNullStorage())
             if (!resumeIsNotExist(r)) {
-                System.out.println("Введите изменения:");
-                String newResume = reader.readLine();
-                if (newResume.length() != 0) {
-                    Resume resume = new Resume(newResume);
-                     if (!resumeIsExist(resume)){
-                         resumes.remove(r);
-                         resumes.add(resume);
-                         System.out.println("Резюме " + newResume + " успешно изменено!");
-                     }
-                }
+                resumes.remove(r);
+                resumes.add(r);
             }
-        }
     }
 
     @Override
     public Resume get(String uuid) {
-        Resume temp = new Resume(uuid);
-        if (containsResume(temp))
-            return temp;
+        Resume r = new Resume(uuid);
+        if (containsResume(r))
+            return resumes.get(resumes.indexOf(r));
         throw new NotExistStorageException(uuid);
     }
 
@@ -65,12 +55,8 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public Resume[] getAll() {
-        int count = 0;
-        Resume[] temp = new Resume[resumes.size()];
-        for (Resume r : resumes) {
-            temp[count] = r;
-            count++;
-        }
+        Resume[] temp = new Resume[size()];
+        temp = resumes.toArray(temp);
         return temp;
     }
 
@@ -79,28 +65,15 @@ public class ListStorage extends AbstractStorage {
         return resumes.size();
     }
 
-    protected boolean isNullStorage() {
-        if (resumes.isEmpty()) {
-            System.out.println("Хранилище резюме пустое!!!");
-            return true;
-        }
-        return false;
-    }
-
+    @Override
     protected boolean containsResume(Resume r) {
         return resumes.contains(r);
     }
 
-    protected boolean resumeIsExist(Resume r) {
-        if (containsResume(r)) {
-            throw new ExistStorageException(r.getUuid());
-        }
-        return false;
-    }
-
-    protected boolean resumeIsNotExist(Resume r) {
-        if (!containsResume(r)) {
-            throw new NotExistStorageException(r.getUuid());
+    protected boolean isNullStorage() {
+        if (resumes.isEmpty()) {
+            System.out.println("Хранилище резюме пустое!!!");
+            return true;
         }
         return false;
     }
